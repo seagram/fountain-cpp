@@ -1,8 +1,15 @@
 // Fountain Parser
 // Parses .fountain file into HTML markup
+#include <string>
 
-void trim_leading_newlines() {
+using namespace std;
+
+void trim_leading_newlines(string &input) {
   // Normalize input by triming all leading newlines
+  // Iterate over input, find first non-newline character
+  // Set as end bound for .erase()
+  input.erase(input.begin(), find_if(input.begin(), input.end(),
+                                     [](char c) { return c != '\n'; }));
 };
 
 void find_first_blank_line_range() {
